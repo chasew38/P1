@@ -1,5 +1,5 @@
 from flask import Flask, render_template, jsonify, request
-from packet_sniffer import start_sniffing, get_packets
+from packet_sniffer import start_sniffing, get_packets, stop_sniffing
 import threading
 from scapy.all import get_if_list, get_if_addr
 
@@ -38,6 +38,11 @@ def start():
 @app.route('/packets')
 def packets():
     return jsonify(get_packets())
+
+@app.route('/stop_sniffing', methods=['POST'])
+def stop_sniffing_route():
+    stop_sniffing()
+    return jsonify({'status': 'sniffing stopped'})
 
 if __name__ == '__main__':
     app.run(debug=True)

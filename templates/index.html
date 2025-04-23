@@ -7,6 +7,7 @@
     <h1>Packet Capture</h1>
     <select id="iface-select"></select>
     <button onclick="startSniffing()">Start Sniffing</button>
+    <button onclick="stopSniffing()">Stop Sniffing</button>
     <table id="packet-table" border="1">
         <tr><th>Time</th><th>Source</th><th>Destination</th><th>Summary</th></tr>
     </table>    
@@ -18,8 +19,8 @@
             const select = document.getElementById('iface-select');
             interfaces.forEach(iface => {
                 const option = document.createElement('option');
-                option.value = iface.name;        // real name for Scapy
-                option.textContent = iface.label; // user-friendly label
+                option.value = iface.name;      
+                option.textContent = iface.label;  //show ip address for user
                 select.appendChild(option);
             });
         }
@@ -50,11 +51,25 @@
                 });
         }
 
+        function stopSniffing() {
+            fetch('/stop_sniffing', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+            .then(res => res.json())
+            .then(data => console.log(data.status))
+            .catch(err => console.error('Error stopping sniffing:', err));
+
+        };
+        
+
         // Start polling every 2 seconds
         setInterval(updatePackets, 2000);
 
-    
         loadInterfaces();
+
     </script>
     
 
