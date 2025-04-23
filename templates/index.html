@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Pseudo Wireshark</title>
+</head>
+<body>
+    <h1>Packet Capture</h1>
+    <select id="iface-select"></select>
+    <button onclick="startSniffing()">Start Sniffing</button>
+    <table id="packet-table" border="1">
+        <tr><th>Time</th><th>Source</th><th>Destination</th><th>Summary</th></tr>
+    </table>    
+    
+    <script>
+        async function loadInterfaces() {
+            const res = await fetch('/interfaces');
+            const interfaces = await res.json();
+            const select = document.getElementById('iface-select');
+            interfaces.forEach(iface => {
+                const option = document.createElement('option');
+                option.value = iface.name;        // real name for Scapy
+                option.textContent = iface.label; // user-friendly label
+                select.appendChild(option);
+            });
+        }
+    
+        function startSniffing() {
+            const selectedIface = document.getElementById('iface-select').value;
+            fetch('/start_sniffing', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({ interface: selectedIface })
+            });
+        }
+        function updatePackets() {
+            fetch('/packets')
+                .then(res => res.json())
+                .then(packets => {
+                    const table = document.getElementById('packet-table');
+                    // Clear all but the header
+                    while (table.rows.length > 1) table.deleteRow(1);
+
+                    packets.forEach(pkt => {
+                        const row = table.insertRow();
+                        row.insertCell().textContent = pkt.time;
+                        row.insertCell().textContent = pkt.src;
+                        row.insertCell().textContent = pkt.dst;
+                        row.insertCell().textContent = pkt.summary;
+                    });
+                });
+        }
+
+        // Start polling every 2 seconds
+        setInterval(updatePackets, 2000);
+
+    
+        loadInterfaces();
+    </script>
+    
+
+</body>
+</html>
