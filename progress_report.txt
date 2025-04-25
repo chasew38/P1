@@ -1,1 +1,48 @@
+<<<<<<< HEAD
 Progress status: Complete! Please review submitted report for full details.
+=======
+Team Project #1 Report
+Subject: Pseudo-Wireshark Packet Analyzer
+Team Members: Jenna Curry, Mei Morrow, Shelbie Raney, Chase Wagner
+Role Distribution Within Team
+•	Project Leader: Mei Morrow
+•	Coding and Development: Chase Wagner
+•	Analysis: Mei Morrow and Jenna Curry
+•	Documentation & Presentation: Shelbie Raney
+•	Freeloader (if applicable): Jeff the Skeleton
+Team Meetings
+Every night in the unknown hours, beneath the pale moon sky with coffees and computers; messaging one another with Discord and Entropy.
+Introduction
+In modern cybersecurity, network forensics plays a critical role in identifying, analyzing, and mitigating threats. This project focuses on building a simplified version of Wireshark—an educational pseudo-packet analyzer using Python, Flask, and Scapy. The tool offers a live, browser-based view of captured packets, designed to introduce students to packet-level analysis in a user-friendly format.
+Design and Implementation
+The project was developed in Python, using the Scapy library for packet sniffing and Flask for the web interface. The architecture is modular, composed of:
+•	packet_sniffer.py: Captures and formats real-time packet data using Scapy. It stores up to the 100 most recent packets in a rolling buffer.
+•	app.py: Manages routing and server-side Flask logic. Provides endpoints to list interfaces, start/stop packet capture, and retrieve packet data.
+Multithreading is used to ensure the Flask server remains responsive while capturing packets in the background.
+Filter Implementation
+While advanced filtering was not implemented, the framework captures all packets on a selected network interface. Packet data is simplified to include:
+•	Timestamp
+•	Source IP
+•	Destination IP
+•	Packet Summary (via Scapy’s summary() method)
+Filtering by protocol, IP, or port can be added in future versions by adjusting the packet_callback() function in packet_sniffer.py.
+Challenges Faced
+•	Interface Detection: On some systems, retrieving usable network interface names and IPs was inconsistent. This was mitigated using get_if_list() and get_if_addr() from Scapy with error handling.
+•	Threading Conflicts: Ensuring that packet capture could run in the background without blocking Flask's routes required careful use of daemon threads and event-based stopping.
+•	Live Updates: Rendering captured packets in real time required frontend polling and careful memory management to avoid flooding the UI or exhausting resources.
+Conclusion
+This project succeeded in developing a basic, functional network packet analyzer. It demonstrates core network forensics principles in a simplified educational tool. The web interface and real-time capture capability make it an accessible starting point for cybersecurity students to explore packet-level traffic.
+References
+•	Scapy Documentation: https://scapy.readthedocs.io/
+•	Flask Documentation: https://flask.palletsprojects.com/
+•	Npcap: https://nmap.org/npcap/
+•	Course Material: CYBS 3743 Programming Project #1 Brief
+•	GitHub Repository: https://github.com/chasew38/P1
+•	ChatGPT (Report and Source Code)
+Appendix
+•	Codebase Overview:
+o	app.py: Flask server and routes
+o	packet_sniffer.py: Scapy-based packet capture logic
+o	requirements.txt: Project dependencies
+o	README.txt: Setup and feature overview
+>>>>>>> 87c14fa (added report)
