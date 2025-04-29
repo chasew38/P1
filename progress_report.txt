@@ -1,13 +1,11 @@
-Progress status: Complete! Please review submitted report for full details.
-=======
 Team Project #1 Report
 Subject: Pseudo-Wireshark Packet Analyzer
 Team Members: Jenna Curry, Mei Morrow, Shelbie Raney, Chase Wagner
 Role Distribution Within Team
 •	Project Leader: Mei Morrow
-•	Coding and Development: Chase Wagner
-•	Analysis: Mei Morrow and Jenna Curry
-•	Documentation & Presentation: Shelbie Raney
+•	Coding and Development: Chase Wagner and Jenna Curry
+•	Analysis: Jenna Curry
+•	Documentation & Presentation: Shelbie Raney and Mei Morrow
 •	Freeloader (if applicable): Jeff the Skeleton
 Team Meetings
 Every night in the unknown hours, beneath the pale moon sky with coffees and computers; messaging one another with Discord and Entropy.

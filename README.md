@@ -1,4 +1,4 @@
-# 🕵️‍♀️ Pseudo Wireshark – A Custom Packet Sniffer for Network Forensics
+# Pseudo Wireshark – A Custom Packet Sniffer for Network Forensics
 
 This project is a lightweight, educational packet sniffer designed for use in a **Network Forensics** course. Built with **Python**, **Scapy**, and a **Flask web interface**, it enables students to observe live network traffic and analyze packets in real-time from their browser.
 
@@ -6,16 +6,16 @@ This project is a lightweight, educational packet sniffer designed for use in a 
 
 ## 🛠 Features
 
-- ✅ Real-time packet capture with Scapy
-- ✅ Web-based interface using Flask
-- ✅ Interface selector with IP info
-- ✅ Start/Stop packet capture controls
-- ✅ Live packet display with auto-refresh
-- ✅ Capture up to 100 most recent packets
+- Real-time packet capture with Scapy
+- Web-based interface using Flask
+- Interface selector with IP info
+- Start/Stop packet capture controls
+- Live packet display with auto-refresh
+- Capture up to 100 most recent packets
 
 ---
 
-## 📦 Requirements
+## Requirements
 
 - Python 3.8+
 - [Npcap](https://nmap.org/npcap/) installed (required for Windows packet capture)
